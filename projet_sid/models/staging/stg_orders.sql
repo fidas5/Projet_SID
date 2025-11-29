@@ -5,7 +5,7 @@ renamed as (
     select
         id as order_id,
         employee_id,
-        customer_id,
+        customer_id,  -- This should match stg_customer.customer_id
         order_date,
         shipped_date,
         shipper_id,

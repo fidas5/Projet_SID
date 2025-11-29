@@ -43,3 +43,16 @@ Internal Error
   Profile should not be None if loading profile completed
 [0m16:05:59.310976 [debug] [MainThread]: Command `dbt debug` failed at 16:05:59.310812 after 3.93 seconds
 [0m16:05:59.311240 [debug] [MainThread]: Flushing usage events
+[0m17:16:19.308867 [debug] [MainThread]: Got an exception trying to initialize tracking
+
+
+============================== 17:16:19.372125 | 2db99271-8a51-40f6-8604-7b2a66881a66 ==============================
+[0m17:16:19.372125 [info ] [MainThread]: Running with dbt=1.11.0-b3
+[0m17:16:19.372872 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'no_print': 'None', 'log_format': 'default', 'use_colors': 'True', 'write_json': 'True', 'warn_error': 'None', 'log_path': 'logs', 'partial_parse': 'True', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'version_check': 'True', 'use_experimental_parser': 'False', 'introspect': 'True', 'quiet': 'False', 'empty': 'False', 'log_cache_events': 'False', 'debug': 'False', 'profiles_dir': 'C:\\Users\\MSI\\.dbt', 'invocation_command': 'dbt run --select staging', 'printer_width': '80', 'target_path': 'None'}
+[0m17:16:19.373440 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\MSI\Desktop\Projet_SID\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m17:16:19.374317 [debug] [MainThread]: Command `dbt run` failed at 17:16:19.374182 after 0.12 seconds
+[0m17:16:19.374590 [debug] [MainThread]: Flushing usage events
