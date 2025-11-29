@@ -9,7 +9,8 @@ renamed as (
         quantity,
         unit_price,
         discount,
-        status_id,
+        status_id as order_details_status_id,
+        date_allocated,
         purchase_order_id,
         inventory_id
     from source

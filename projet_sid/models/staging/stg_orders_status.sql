@@ -3,7 +3,7 @@ with source as (
 ),
 renamed as (
     select
-        id,
+        id as orders_status_id,
         status_name
     from source
 )

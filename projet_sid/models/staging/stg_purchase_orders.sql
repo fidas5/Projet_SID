@@ -5,10 +5,10 @@ renamed as (
     select
         id as purchase_order_id,
         supplier_id,
-        created_by,
+        created_by as created_by_employee_id,
         submitted_date,
         creation_date,
-        status_id,
+        status_id as purchase_order_status_id,
         expected_date,
         shipping_fee,
         taxes,
@@ -16,9 +16,9 @@ renamed as (
         payment_amount,
         payment_method,
         notes,
-        approved_by,
+        approved_by as approved_by_employee_id,
         approved_date,
-        submitted_by
+        submitted_by as submitted_by_employee_id
     from source
 )
 select * from renamed

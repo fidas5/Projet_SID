@@ -21,8 +21,8 @@ renamed as (
         paid_date,
         notes,
         tax_rate,
-        tax_status_id,
-        status_id
+        tax_status_id as orders_tax_status_id,
+        status_id as orders_status_id
     from source
 )
 select * from renamed
