@@ -1,0 +1,45 @@
+[0m16:01:03.586256 [debug] [MainThread]: Got an exception trying to initialize tracking
+
+
+============================== 16:01:03.730027 | 44cde219-338d-4a3e-8c64-ba74c4eac1a6 ==============================
+[0m16:01:03.730027 [info ] [MainThread]: Running with dbt=1.11.0-b3
+[0m16:01:03.730948 [debug] [MainThread]: running dbt with arguments {'log_format': 'default', 'write_json': 'True', 'no_print': 'None', 'invocation_command': 'dbt init', 'cache_selected_only': 'False', 'warn_error': 'None', 'static_parser': 'True', 'fail_fast': 'False', 'log_path': 'logs', 'send_anonymous_usage_stats': 'True', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True', 'version_check': 'True', 'use_experimental_parser': 'False', 'introspect': 'True', 'quiet': 'False', 'empty': 'None', 'log_cache_events': 'False', 'debug': 'False', 'profiles_dir': 'C:\\Users\\MSI\\.dbt', 'use_colors': 'True', 'printer_width': '80', 'target_path': 'None'}
+[0m16:02:12.841910 [debug] [MainThread]: Starter project path: C:\Users\MSI\miniconda3\Lib\site-packages\dbt\include\starter_project
+[0m16:02:12.871522 [info ] [MainThread]: 
+Your new dbt project "projet_sid" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m16:02:12.872721 [info ] [MainThread]: Setting up your profile.
+[0m16:05:41.768905 [info ] [MainThread]: Profile projet_sid written to C:\Users\MSI\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m16:05:41.771538 [debug] [MainThread]: Command `dbt init` succeeded at 16:05:41.771086 after 278.26 seconds
+[0m16:05:41.771886 [debug] [MainThread]: Flushing usage events
+[0m16:05:55.438835 [debug] [MainThread]: Got an exception trying to initialize tracking
+
+
+============================== 16:05:55.557297 | 9a841a53-4de8-4963-a41c-5839a8ea0531 ==============================
+[0m16:05:55.557297 [info ] [MainThread]: Running with dbt=1.11.0-b3
+[0m16:05:55.557982 [debug] [MainThread]: running dbt with arguments {'log_format': 'default', 'invocation_command': 'dbt debug', 'profiles_dir': 'C:\\Users\\MSI\\.dbt', 'cache_selected_only': 'False', 'write_json': 'True', 'warn_error': 'None', 'static_parser': 'True', 'partial_parse': 'True', 'indirect_selection': 'eager', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': 'logs', 'version_check': 'True', 'use_experimental_parser': 'False', 'introspect': 'True', 'quiet': 'False', 'empty': 'None', 'log_cache_events': 'False', 'debug': 'False', 'no_print': 'None', 'use_colors': 'True', 'printer_width': '80', 'target_path': 'None'}
+[0m16:05:55.576033 [info ] [MainThread]: dbt version: 1.11.0-b3
+[0m16:05:55.576489 [info ] [MainThread]: python version: 3.13.5
+[0m16:05:55.576789 [info ] [MainThread]: python path: C:\Users\MSI\miniconda3\python.exe
+[0m16:05:55.577077 [info ] [MainThread]: os info: Windows-11-10.0.26100-SP0
+[0m16:05:59.308720 [info ] [MainThread]: Using profiles dir at C:\Users\MSI\.dbt
+[0m16:05:59.309321 [info ] [MainThread]: Using profiles.yml file at C:\Users\MSI\.dbt\profiles.yml
+[0m16:05:59.309670 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\MSI\Desktop\Projet_SID\dbt_project.yml
+[0m16:05:59.310040 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m16:05:59.310976 [debug] [MainThread]: Command `dbt debug` failed at 16:05:59.310812 after 3.93 seconds
+[0m16:05:59.311240 [debug] [MainThread]: Flushing usage events
