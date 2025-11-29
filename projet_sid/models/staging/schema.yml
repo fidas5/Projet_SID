@@ -1,0 +1,332 @@
+version: 2
+
+models:
+  - name: stg_customer
+    description: "Staging table for customers"
+    columns:
+      - name: customer_id
+        description: "Primary key for customers"
+        tests:
+          - unique
+          - not_null
+      - name: company_name
+        description: "Customer company name"
+      - name: last_name
+        description: "Customer last name"
+      - name: first_name
+        description: "Customer first name"
+
+  - name: stg_employees
+    description: "Staging table for employees"
+    columns:
+      - name: employee_id
+        description: "Primary key for employees"
+        tests:
+          - unique
+          - not_null
+      - name: company_name
+        description: "Company name"
+      - name: last_name
+        description: "Employee last name"
+      - name: first_name
+        description: "Employee first name"
+
+  - name: stg_products
+    description: "Staging table for products"
+    columns:
+      - name: product_id
+        description: "Primary key for products"
+        tests:
+          - unique
+          - not_null
+      - name: product_code
+        description: "Product code"
+      - name: product_name
+        description: "Product name"
+      - name: category
+        description: "Product category"
+
+  - name: stg_suppliers
+    description: "Staging table for suppliers"
+    columns:
+      - name: supplier_id
+        description: "Primary key for suppliers"
+        tests:
+          - unique
+          - not_null
+      - name: company
+        description: "Supplier company name"
+      - name: last_name
+        description: "Supplier contact last name"
+      - name: first_name
+        description: "Supplier contact first name"
+
+  - name: stg_shippers
+    description: "Staging table for shippers"
+    columns:
+      - name: shipper_id
+        description: "Primary key for shippers"
+        tests:
+          - unique
+          - not_null
+      - name: company
+        description: "Shipper company name"
+
+  - name: stg_privileges
+    description: "Staging table for privileges"
+    columns:
+      - name: privilege_id
+        description: "Primary key for privileges"
+        tests:
+          - unique
+          - not_null
+      - name: privilege_name
+        description: "Privilege name"
+
+  - name: stg_orders_status
+    description: "Lookup table for order statuses"
+    columns:
+      - name: orders_status_id
+        description: "Primary key for order statuses"
+        tests:
+          - unique
+          - not_null
+      - name: status_name
+        description: "Status name"
+
+  - name: stg_orders_tax_status
+    description: "Lookup table for order tax statuses"
+    columns:
+      - name: orders_tax_status_id
+        description: "Primary key for order tax statuses"
+        tests:
+          - unique
+          - not_null
+      - name: tax_status_name
+        description: "Tax status name"
+
+  - name: stg_order_details_status
+    description: "Lookup table for order detail statuses"
+    columns:
+      - name: order_details_status_id
+        description: "Primary key for order detail statuses"
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: "Status name"
+
+  - name: stg_purchase_order_status
+    description: "Lookup table for purchase order statuses"
+    columns:
+      - name: purchase_order_status_id
+        description: "Primary key for purchase order statuses"
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: "Status name"
+
+  - name: stg_inventory_transaction_types
+    description: "Lookup table for inventory transaction types"
+    columns:
+      - name: inventory_transaction_type_id
+        description: "Primary key for inventory transaction types"
+        tests:
+          - unique
+          - not_null
+      - name: inventory_transaction_type_name
+        description: "Transaction type name"
+
+  - name: stg_orders
+    description: "Staging table for orders"
+    columns:
+      - name: order_id
+        description: "Primary key for orders"
+        tests:
+          - unique
+          - not_null
+      - name: employee_id
+        description: "Foreign key to employees"
+        tests:
+          - relationships:
+              to: ref('stg_employees')
+              field: employee_id
+      - name: customer_id
+        description: "Foreign key to customers"
+        tests:
+          - relationships:
+              to: ref('stg_customer')
+              field: customer_id
+      - name: shipper_id
+        description: "Foreign key to shippers"
+      - name: orders_tax_status_id
+        description: "Foreign key to order tax statuses"
+        tests:
+          - relationships:
+              to: ref('stg_orders_tax_status')
+              field: orders_tax_status_id
+      - name: orders_status_id
+        description: "Foreign key to order statuses"
+        tests:
+          - relationships:
+              to: ref('stg_orders_status')
+              field: orders_status_id
+
+  - name: stg_order_details
+    description: "Staging table for order details"
+    columns:
+      - name: order_detail_id
+        description: "Primary key for order details"
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Foreign key to orders"
+        tests:
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+      - name: product_id
+        description: "Foreign key to products"
+        tests:
+          - relationships:
+              to: ref('stg_products')
+              field: product_id
+      - name: order_details_status_id
+        description: "Foreign key to order detail statuses"
+        tests:
+          - relationships:
+              to: ref('stg_order_details_status')
+              field: order_details_status_id
+      - name: purchase_order_id
+        description: "Foreign key to purchase orders"
+      - name: inventory_id
+        description: "Foreign key to inventory transactions"
+
+  - name: stg_purchase_orders
+    description: "Staging table for purchase orders"
+    columns:
+      - name: purchase_order_id
+        description: "Primary key for purchase orders"
+        tests:
+          - unique
+          - not_null
+      - name: supplier_id
+        description: "Foreign key to suppliers"
+        tests:
+          - relationships:
+              to: ref('stg_suppliers')
+              field: supplier_id
+      - name: created_by_employee_id
+        description: "Foreign key to employees (creator)"
+      - name: approved_by_employee_id
+        description: "Foreign key to employees (approver)"
+      - name: submitted_by_employee_id
+        description: "Foreign key to employees (submitter)"
+      - name: purchase_order_status_id
+        description: "Foreign key to purchase order statuses"
+        tests:
+          - relationships:
+              to: ref('stg_purchase_order_status')
+              field: purchase_order_status_id
+
+  - name: stg_purchase_order_details
+    description: "Staging table for purchase order details"
+    columns:
+      - name: purchase_order_detail_id
+        description: "Primary key for purchase order details"
+        tests:
+          - unique
+          - not_null
+      - name: purchase_order_id
+        description: "Foreign key to purchase orders"
+        tests:
+          - relationships:
+              to: ref('stg_purchase_orders')
+              field: purchase_order_id
+      - name: product_id
+        description: "Foreign key to products"
+        tests:
+          - relationships:
+              to: ref('stg_products')
+              field: product_id
+      - name: inventory_id
+        description: "Foreign key to inventory transactions"
+
+  - name: stg_inventory_transactions
+    description: "Staging table for inventory transactions"
+    columns:
+      - name: inventory_transaction_id
+        description: "Primary key for inventory transactions"
+        tests:
+          - unique
+          - not_null
+      - name: inventory_transaction_type_id
+        description: "Foreign key to inventory transaction types"
+        tests:
+          - relationships:
+              to: ref('stg_inventory_transaction_types')
+              field: inventory_transaction_type_id
+      - name: product_id
+        description: "Foreign key to products"
+        tests:
+          - relationships:
+              to: ref('stg_products')
+              field: product_id
+      - name: purchase_order_id
+        description: "Foreign key to purchase orders"
+      - name: order_id
+        description: "Foreign key to orders"
+
+  - name: stg_invoices
+    description: "Staging table for invoices"
+    columns:
+      - name: invoice_id
+        description: "Primary key for invoices"
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Foreign key to orders"
+        tests:
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+
+  - name: stg_employee_privileges
+    description: "Bridge table for employee privileges"
+    columns:
+      - name: employee_id
+        description: "Foreign key to employees"
+        tests:
+          - relationships:
+              to: ref('stg_employees')
+              field: employee_id
+      - name: privilege_id
+        description: "Foreign key to privileges"
+        tests:
+          - relationships:
+              to: ref('stg_privileges')
+              field: privilege_id
+
+  - name: stg_sales_reports
+    description: "Staging table for sales reports configuration"
+    columns:
+      - name: group_by
+        description: "Grouping field"
+      - name: display
+        description: "Display name"
+      - name: title
+        description: "Report title"
+
+  - name: stg_strings
+    description: "Staging table for application strings"
+    columns:
+      - name: string_id
+        description: "Primary key for strings"
+        tests:
+          - unique
+          - not_null
+      - name: string_data
+        description: "String content"

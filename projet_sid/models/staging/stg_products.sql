@@ -3,7 +3,6 @@ with source as (
 ),
 renamed as (
     select
-        supplier_ids,
         id as product_id,
         product_code,
         product_name,
